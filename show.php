@@ -9,34 +9,9 @@ if (false === $id || null === $id) {
 }
 
 // Fetching a recipe from database -  assuming the database is okay
-$connection = new PDO("mysql:host=" . SERVER . ";dbname=" . DATABASE . ";charset=utf8", USER, PASSWORD);
-$query = 'SELECT title, description FROM recipe WHERE id=:id';
-$statement = $connection->prepare($query);
-$statement->bindValue(':id', $id, PDO::PARAM_INT);
-$statement->execute();
-$recipe = $statement->fetch(PDO::FETCH_ASSOC);
-
-// Database result check
-if (!isset($recipe['title']) || !isset($recipe['description'])) {
-    header("Location: /");
-    exit("Recipe not found");
-}
+require __DIR__ . '/src/models/recipeModel.php';
+$recipe = getRecipeById($id);
 
 // Generate the web page
-?>
-<!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title><?= $recipe['title'] ?></title>
-    </head>
-    <body>
-        <a href="/">Home</a>
-        <h1><?= $recipe['title'] ?></h1>
+require __DIR__ . '/src/views/showRecipe.php';
 
-        <div>
-            <?= $recipe['description'] ?>
-        </div>
-    </body>
-</html>
