@@ -1,21 +1,36 @@
 <!doctype html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>List of Recipes</title>
-    </head>
-    <body>
-        <h1>List of Recipes</h1>
-        <a href="add.php">Ajouter</a>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>List of Recipes</title>
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body class="container">
+    <main >
+        <header>
+            <h1>List of Recipes</h1>
+        </header>
+        <img src="assets/images/bilbo.jpg" alt="">
         <ul>
             <?php foreach ($recipes as $recipe) : ?>
-            <li>
-                <a href="show.php?id=<?= $recipe['id'] ?>">
-                    <?= htmlentities($recipe['title']) ?>
-                </a>
-            </li>
+                <li>
+                    <a href="detail-recette ?id=<?= $recipe['id'] ?>">
+                        <?= htmlentities($recipe['title']) ?>
+                    </a>
+                </li>
             <?php endforeach ?>
         </ul>
-    </body>
+
+
+    </main>
+    <footer>
+        <a role="button" href="/ajouter-recette">Ajouter</a>
+
+    </footer>
+</body>
+
 </html>

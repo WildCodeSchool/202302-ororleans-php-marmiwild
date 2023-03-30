@@ -1,15 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@picocss/pico@1.*/css/pico.min.css">
+
 </head>
 
-<body>
+<body class="container">
     <main>
         <h1>Ajouter une recette</h1>
         <?php if (!empty($errors)) : ?>
@@ -28,6 +29,9 @@
 
             <button>Ajouter</button>
         </form>
+        <footer>
+            <a role="button" class="secondary outline" href="/">Retour</a>
+        </footer>
     </main>
 </body>
 

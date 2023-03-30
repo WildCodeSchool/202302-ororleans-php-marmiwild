@@ -15,7 +15,7 @@ function getAllRecipes(): array
     return $statement->fetchAll(PDO::FETCH_ASSOC);
 }
 
-function getRecipeById(int $id): array
+function getRecipeById(int $id): array|false
 {
     $connection = createConnection();
 
