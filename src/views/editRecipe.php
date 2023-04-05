@@ -12,7 +12,7 @@
 
 <body class="container">
     <main>
-        <h1>Ajouter une recette</h1>
+        <h1>Modifier une recette</h1>
         <?php if (!empty($errors)) : ?>
             <ul>
                 <?php foreach ($errors as $error) : ?>
@@ -20,7 +20,7 @@
                 <?php endforeach ?>
             </ul>
         <?php endif ?>
-        <?php $buttonName = 'Ajouter' ?>
+        <?php $buttonName = 'Editer' ?>
         <?php include '_form.php' ?>
 
         <footer>

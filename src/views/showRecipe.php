@@ -21,6 +21,10 @@
         <?php endif; ?>
     </main>
     <footer>
+        <form action="supprimer-recette" method="POST">
+            <input type="hidden" name="id" value="<?= $recipe['id'] ?>">
+            <button>Delete</button>
+        </form>
         <a role="button" class="secondary outline" href="/">Retour</a>
     </footer>
 </body>

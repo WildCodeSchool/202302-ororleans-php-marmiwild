@@ -14,11 +14,11 @@
         <header>
             <h1>List of Recipes</h1>
         </header>
-        <img src="assets/images/bilbo.jpg" alt="">
+
         <ul>
             <?php foreach ($recipes as $recipe) : ?>
                 <li>
-                    <a href="detail-recette ?id=<?= $recipe['id'] ?>">
+                    <a href="detail-recette?id=<?= $recipe['id'] ?>">
                         <?= htmlentities($recipe['title']) ?>
                     </a>
                 </li>
