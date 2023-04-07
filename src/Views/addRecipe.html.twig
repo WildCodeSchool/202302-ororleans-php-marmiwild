@@ -12,16 +12,9 @@
 
 <body class="container">
     <main>
-        <h1>Modifier une recette</h1>
-        <?php if (!empty($errors)) : ?>
-            <ul>
-                <?php foreach ($errors as $error) : ?>
-                    <li><?= $error ?></li>
-                <?php endforeach ?>
-            </ul>
-        <?php endif ?>
-        <?php $buttonName = 'Editer' ?>
-        <?php include '_form.php' ?>
+        <h1>Ajouter une recette</h1>
+
+        {% include '_form.html.twig' %}
 
         <footer>
             <a role="button" class="secondary outline" href="/">Retour</a>

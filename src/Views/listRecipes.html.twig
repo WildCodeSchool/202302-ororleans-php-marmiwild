@@ -16,13 +16,16 @@
         </header>
 
         <ul>
-            <?php foreach ($recipes as $recipe) : ?>
+            {% for recipe in recipes %}
+            {# <?php foreach ($recipes as $recipe) : ?> #}
                 <li>
-                    <a href="detail-recette?id=<?= $recipe['id'] ?>">
-                        <?= htmlentities($recipe['title']) ?>
+                    <a href="detail-recette?id={{ recipe.id }}">
+                        {# <?= htmlentities($recipe['title']) ?> #}
+                        {{ recipe.title }}
                     </a>
                 </li>
-            <?php endforeach ?>
+            {# <?php endforeach ?> #}
+            {% endfor %}
         </ul>
 
 

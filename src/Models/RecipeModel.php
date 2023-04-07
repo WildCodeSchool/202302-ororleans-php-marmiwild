@@ -1,5 +1,9 @@
 <?php
 
+namespace App\Models;
+
+use PDO;
+
 class RecipeModel
 {
     private PDO $pdo;
@@ -14,7 +18,7 @@ class RecipeModel
          // Fetching all recipes from database - assuming the database is okay
         $statement = $this->pdo->query('SELECT id, title FROM recipe');
 
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
+        return $statement->fetchAll(\PDO::FETCH_ASSOC);
     }
 
     public function getRecipeById(int $id): array|false

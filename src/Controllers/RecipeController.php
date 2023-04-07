@@ -1,13 +1,21 @@
 <?php
-require __DIR__ . '/../models/RecipeModel.php';
+
+namespace App\Controllers;
+
+use Twig\Environment;
+use App\Models\RecipeModel;
+use Twig\Loader\FilesystemLoader;
 
 class RecipeController
 {
     private RecipeModel $recipeModel;
+    private Environment $twig;
 
     public function __construct()
     {
         $this->recipeModel = new RecipeModel();
+        $loader = new FilesystemLoader(__DIR__ . '/../Views/');
+        $this->twig = new Environment($loader);
     }
 
     public function list()
@@ -15,7 +23,9 @@ class RecipeController
         $recipes = $this->recipeModel->getAllRecipes();
 
         // Generate the web page
-        require __DIR__ . '/../views/listRecipes.php';
+        echo $this->twig->render('listRecipes.html.twig', [
+            'recipes' => $recipes,
+        ]);
     }
 
     private function validate(array $recipe): array
@@ -56,7 +66,10 @@ class RecipeController
         }
 
         // Generate the web page
-        require __DIR__ . '/../views/editRecipe.php';
+        echo $this->twig->render('editRecipe.html.twig', [
+            'errors' => $errors ?? [],
+            'recipe' => $recipe,
+        ]);
     }
 
     public function add()
@@ -76,7 +89,10 @@ class RecipeController
         }
 
         // Generate the web page
-        require __DIR__ . '/../views/addRecipe.php';
+        echo $this->twig->render('addRecipe.html.twig', [
+            'errors' => $errors ?? [],
+            'recipe' => $recipe ?? [],
+        ]);
     }
 
     public function show(int $id)
@@ -84,7 +100,7 @@ class RecipeController
         $recipe = $this->recipeModel->getRecipeById($id);
 
         // Generate the web page
-        require __DIR__ . '/../views/showRecipe.php';
+        require __DIR__ . '/../Views/showRecipe.php';
     }
 
     public function delete()
